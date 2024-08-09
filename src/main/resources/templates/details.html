@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title th:if="${titulo!=null}" th:text="${titulo}"></title>
+        <title th:if="${titulo==null}" th:text="${'Titulo No Disponible'}"></title>
+    </head>
+    <body>
+        <h1 th:if="${titulo!=null}" th:text="${titulo}"></h1>
+        <h1 th:if="${titulo==null}" th:text="${'Titulo No Disponible'}"></h1>
+        <h2>Usuario:</h2>
+        
+        <div th:if="${user==null}" th:text="'No Hay Usuario Para Mostrar'"></div>
+        
+        <div th:if="${user!=null}">
+            <p th:text="'Nombre del Usuario: ' + ${user.name}"></p>
+            <p th:text="'Apellido del Usuario: ' + ${user.lastname}"></p>
+
+            <p th:if="${user.mail!=null}" th:text="'Email de Usuario: ' + ${user.mail}"></p>
+            <p th:if="${user.mail==null}" th:text="'Email de Usuario: No cuenta con uno.'"></p>
+        </div>
+        <a th:href="@{/web/listUsers}">Ver Pagina de Lista</a>
+    </body>
+</html>
+
